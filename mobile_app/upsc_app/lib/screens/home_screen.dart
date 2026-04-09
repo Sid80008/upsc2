@@ -148,7 +148,6 @@ class _HomeScreenState extends State<HomeScreen> {
       final success = await _api.submitDailyReport(
         userId: _userId!,
         date: DateTime.now().toIso8601String().split('T')[0],
-        focusRating: 5,
         blocks: _blocks.map((b) => {
           'block_id': b.id,
           'status': b.status,

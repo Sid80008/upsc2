@@ -21,10 +21,11 @@ class _CommandCenterScreenState extends State<CommandCenterScreen> {
   }
 
   Future<void> _loadData() async {
-    final summary = await _api.fetchDashboardSummary();
+    // Dashboard router is currently disabled on backend.
+    // CommandCenter shows with null summary — all values default to 0/safe.
     if (mounted) {
       setState(() {
-        _summary = summary;
+        _summary = null;
         _isLoading = false;
       });
     }

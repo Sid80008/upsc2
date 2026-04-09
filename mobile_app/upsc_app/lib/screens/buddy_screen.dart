@@ -106,17 +106,22 @@ class _BuddyScreenState extends State<BuddyScreen> {
     await _saveChatHistory();
 
     try {
-      final Map<String, dynamic> response = await _api.queryAI(text);
+      // AI router is currently disabled on the backend.
+      // Buddy screen uses a local static response as a fallback.
+      await Future.delayed(const Duration(milliseconds: 600));
+      final Map<String, dynamic> response = {
+        'response': "I'm in offline mode right now. Keep pushing — focus on your weak subjects today and track your blocks consistently. Consistency beats intensity!"
+      };
       if (mounted) {
         setState(() {
           _isTyping = false;
           _messages.add({
             'isUser': false, 
-            'text': response['response'] as String? ?? "I'm having trouble connecting right now, let's try again in a moment.",
+            'text': response['response'] as String,
             'insights': false
           });
         });
-        _saveChatHistory(); // No need to await here, just fire and forget if screen is still active
+        _saveChatHistory();
       }
     } catch (e) {
       if (mounted) {

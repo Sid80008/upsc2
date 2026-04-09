@@ -33,15 +33,16 @@ class StudyBlock {
   factory StudyBlock.fromJson(Map<String, dynamic> json) {
     return StudyBlock(
       id: json['id'] as int,
-      userId: json['user_id'] as int,
+      userId: (json['user_id'] as int?) ?? 0,
       subject: json['subject'] as String,
       topic: json['topic'] as String?,
       date: json['date'] as String,
       startTime: json['start_time'] as String,
-      endTime: json['end_time'] ?? '00:00', // Added for UI compatibility
+      endTime: json['end_time'] ?? '00:00',
       durationMinutes: json['duration_minutes'] as int,
       status: json['status'] as String,
-      completionPercent: json['completion_percent'] as int? ?? 0,
+      completionPercent: (json['completion_percent'] as int?) ?? 0,
+      timeSpentMinutes: (json['time_spent_minutes'] as int?) ?? 0,
       rescheduledFromId: json['rescheduled_from_id'] as int?,
     );
   }

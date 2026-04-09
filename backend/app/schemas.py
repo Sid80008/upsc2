@@ -54,6 +54,7 @@ class TaskAddRequest(BaseModel):
 
 class StudyBlockOut(BaseModel):
     id: int
+    user_id: Optional[int] = None
     subject: str
     topic: Optional[str] = None
     date: date
