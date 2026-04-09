@@ -7,10 +7,18 @@ import '../core/config.dart';
 class AuthService {
   final String baseUrl = AppConfig.apiUrl;
 
+  String _getAuthUrl() => baseUrl.endsWith('/auth') ? baseUrl : '$baseUrl/auth';
+  String _getOnboardingUrl() => baseUrl.endsWith('/auth') 
+      ? baseUrl.replaceAll('/auth', '/onboarding') 
+      : '$baseUrl/onboarding';
+  String _getScheduleUrl() => baseUrl.endsWith('/auth')
+      ? baseUrl.replaceAll('/auth', '/schedule')
+      : '$baseUrl/schedule';
+
   Future<bool> login(String email, String password) async {
     try {
       final response = await http.post(
-        Uri.parse('$baseUrl/login'),
+        Uri.parse('${_getAuthUrl()}/login'),
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: {'username': email, 'password': password},
       );
@@ -42,7 +50,7 @@ class AuthService {
       if (currentRefreshToken == null) return false;
 
       final response = await http.post(
-        Uri.parse('$baseUrl/refresh'),
+        Uri.parse('${_getAuthUrl()}/refresh'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'refresh_token': currentRefreshToken}),
       );
@@ -65,7 +73,7 @@ class AuthService {
   Future<bool> signup(String name, String email, String password) async {
     try {
       final response = await http.post(
-        Uri.parse('$baseUrl/signup'),
+        Uri.parse('${_getAuthUrl()}/signup'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'name': name,
@@ -102,7 +110,7 @@ class AuthService {
       if (token == null) return null;
       
       final response = await http.get(
-        Uri.parse('$baseUrl/me'),
+        Uri.parse('${_getAuthUrl()}/me'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
@@ -134,7 +142,7 @@ class AuthService {
       if (weakSubjects != null) body['weak_subjects'] = weakSubjects;
 
       final response = await http.put(
-        Uri.parse('$baseUrl/auth/me'),
+        Uri.parse('${_getAuthUrl()}/me'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
@@ -154,9 +162,8 @@ class AuthService {
       final token = await getToken();
       if (token == null) return false;
 
-      final url = baseUrl.replaceAll('/auth', '/onboarding/complete');
       final response = await http.post(
-        Uri.parse(url),
+        Uri.parse('${_getOnboardingUrl()}/complete'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
@@ -176,9 +183,8 @@ class AuthService {
       final token = await getToken();
       if (token == null) return false;
 
-      final url = baseUrl.replaceAll('/auth', '/onboarding/setup');
       final response = await http.post(
-        Uri.parse(url),
+        Uri.parse('${_getOnboardingUrl()}/setup'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',

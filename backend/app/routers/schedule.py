@@ -13,7 +13,7 @@ from app.db.database import get_db
 from app.schemas import (
     ScheduleGenerateRequest, ScheduleGenerateResponse, StudyBlockOut,
     UserSignalsOut, SubjectSignalOut, BehavioralFingerprintOut,
-    WeeklyReviewOut,
+    WeeklyReviewOut, TaskAddRequest,
 )
 
 from app.services.orchestrator import Orchestrator
@@ -122,13 +122,13 @@ def get_weekly_review_endpoint(
 # COMMENTED-OUT ENDPOINTS — preserved for future phases
 # --------------------------------------------------------------------------
 
-# @router.post("/add_task", response_model=StudyBlockOut)
-# def add_task_endpoint(
-#     request: TaskAddRequest,
-#     current_user: User = Depends(get_current_user),
-#     db: Session = Depends(get_db),
-# ):
-#     ...
+@router.post("/add_task", response_model=StudyBlockOut)
+def add_task_endpoint(
+    request: TaskAddRequest,
+    db: Session = Depends(get_db),
+):
+    orch = Orchestrator(db)
+    return orch.add_task(request)
 
 # @router.get("/block/{block_id}", response_model=StudyBlockOut)
 # def get_single_block(

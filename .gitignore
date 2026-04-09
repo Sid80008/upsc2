@@ -11,8 +11,9 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+# Python build lib dirs (scoped to avoid ignoring Flutter lib/)
+backend/lib/
+backend/lib64/
 parts/
 sdist/
 var/

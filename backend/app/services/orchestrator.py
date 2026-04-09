@@ -13,7 +13,7 @@ from typing import List
 from sqlalchemy.orm import Session
 
 from app.db.models import StudyBlock
-from app.schemas import ReportSubmitRequest, ReportSubmitResponse
+from app.schemas import ReportSubmitRequest, ReportSubmitResponse, TaskAddRequest
 
 
 class Orchestrator:
@@ -35,3 +35,19 @@ class Orchestrator:
     def get_weekly_review(self, user_id: int, week_start: date):
         from app.services import weekly_review
         return weekly_review.generate_weekly_review(user_id, week_start, self.db)
+
+    def add_task(self, request: TaskAddRequest) -> StudyBlock:
+        new_block = StudyBlock(
+            user_id=request.user_id or 1,
+            subject=request.subject,
+            topic=request.topic,
+            date=request.date,
+            start_time=request.start_time,
+            duration_minutes=request.duration_minutes,
+            status="pending",
+            completion_percent=0
+        )
+        self.db.add(new_block)
+        self.db.commit()
+        self.db.refresh(new_block)
+        return new_block
