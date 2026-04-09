@@ -44,9 +44,12 @@ def complete_onboarding(
     
     db.commit()
     
-    # Immediately trigger schedule generation for the next day as requested by the Senior Engineering Directive
-    tomorrow = date.today() + timedelta(days=1)
-    schedule = generate_schedule(db, current_user.id, tomorrow)
+    # Trigger first schedule generation — non-blocking
+    try:
+        tomorrow = date.today() + timedelta(days=1)
+        generate_schedule(db, current_user.id, tomorrow)
+    except Exception:
+        pass  # Schedule generation failure must not block onboarding
     
     return {
         "status": "success",
@@ -68,9 +71,12 @@ def setup_user(
     
     db.commit()
     
-    # Trigger first schedule generation
-    tomorrow = date.today() + timedelta(days=1)
-    generate_schedule(db, current_user.id, tomorrow)
+    # Trigger first schedule generation — non-blocking
+    try:
+        tomorrow = date.today() + timedelta(days=1)
+        generate_schedule(db, current_user.id, tomorrow)
+    except Exception:
+        pass  # Schedule generation failure must not block setup
     
     return {
         "status": "success",
