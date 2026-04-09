@@ -1,0 +1,153 @@
+C:\Users\siddh\OneDrive\Desktop\CODES\Projects\UPSC\backend\app\services\ai_engine.py:3: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+INFO:     Started server process [11524]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     10.156.66.86:40950 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:46608 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:55384 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:55396 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:55400 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:55414 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:60574 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:60576 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:60590 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:48388 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:48392 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:55420 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:40020 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:40034 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:44258 - "POST /report/submit HTTP/1.1" 200 OK
+INFO:     10.156.66.86:44270 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:44278 - "POST /report/submit HTTP/1.1" 200 OK
+INFO:     10.156.66.86:44282 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:57460 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:54346 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41652 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41656 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:60624 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:37538 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:50938 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+Gemini API Error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+INFO:     10.156.66.86:48236 - "GET /insights/advanced/ai_analysis HTTP/1.1" 200 OK
+INFO:     10.156.66.86:51426 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:51428 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:51440 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:51450 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:34656 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:45142 - "POST /report/submit HTTP/1.1" 200 OK
+INFO:     10.156.66.86:45146 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:45160 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:45168 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:45184 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:45198 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:60242 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:58998 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:42650 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:42664 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+Gemini API Error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+INFO:     10.156.66.86:41762 - "POST /tutor/chat HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41778 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+Gemini API Error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+INFO:     10.156.66.86:41198 - "POST /tutor/chat HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41210 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:36060 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:36062 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:49642 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:60206 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:60218 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:60220 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:60234 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:36016 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:37250 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:46980 - "POST /add_task HTTP/1.1" 404 Not Found
+Gemini API Error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+INFO:     10.156.66.86:42692 - "GET /insights/advanced/ai_analysis HTTP/1.1" 200 OK
+Gemini API Error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+INFO:     10.156.66.86:58664 - "GET /insights/advanced/ai_analysis HTTP/1.1" 200 OK
+INFO:     10.156.66.86:44550 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:43016 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:56634 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:45218 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:56260 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:56272 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:56284 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:56294 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:53730 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:53736 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41812 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:59110 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:59124 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:59132 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:59136 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:59142 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:59148 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:59160 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:53980 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:33656 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:57184 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:57190 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:57196 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:57204 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:49594 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:49604 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:36196 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:36206 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:36222 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41564 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41566 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41578 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41592 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41602 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:41612 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:35352 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:35368 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:35382 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:35392 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:35394 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:35398 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:46852 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:57720 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:57722 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:39000 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:39002 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:48554 - "POST /report/submit HTTP/1.1" 200 OK
+INFO:     10.156.66.86:48562 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:48568 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:48574 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:56954 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:56956 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:56968 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:56980 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:52666 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:52672 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:52682 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:35988 - "GET /schedule/1/2026-03-19 HTTP/1.1" 200 OK
+INFO:     10.156.66.86:56500 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:58654 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:58660 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:58666 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:58674 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:58682 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:58692 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:58698 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:58714 - "PUT /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:53950 - "POST /auth/signup HTTP/1.1" 200 OK
+INFO:     10.156.66.86:53962 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     10.156.66.86:59422 - "POST /onboarding/setup HTTP/1.1" 404 Not Found
+INFO:     10.156.66.86:59436 - "POST /onboarding/setup HTTP/1.1" 404 Not Found
+INFO:     10.156.66.86:59452 - "POST /onboarding/setup HTTP/1.1" 404 Not Found
+INFO:     10.156.66.86:59466 - "POST /onboarding/setup HTTP/1.1" 404 Not Found
+INFO:     10.156.66.86:37430 - "POST /onboarding/setup HTTP/1.1" 404 Not Found
+INFO:     10.156.66.86:37444 - "POST /onboarding/setup HTTP/1.1" 404 Not Found
+INFO:     10.156.66.86:37456 - "POST /onboarding/setup HTTP/1.1" 404 Not Found
+INFO:     10.156.66.86:55058 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     10.156.66.86:48858 - "GET /auth/me HTTP/1.1" 200 OK

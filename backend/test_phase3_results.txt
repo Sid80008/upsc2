@@ -1,0 +1,77 @@
+
+=== TEST 1: GET /schedule/signals/1 (no history) ===
+  Status: 200
+  consistency_score: 0.0
+  weak_subjects: []
+  subject_signals count: 7
+[PASS] HTTP 200
+[PASS] consistency_score = 0.0
+[PASS] weak_subjects empty
+[PASS] 7 subject_signals
+[PASS] all counts zero
+
+=== TEST 2: Seed history + GET /schedule/signals/1 ===
+  Day -1 (2026-03-28): 4 blocks - [History, Geography, Polity, Economy]
+  Day -2 (2026-03-27): 4 blocks - [Environment, Current Affairs, Essay, History]
+  Day -3 (2026-03-26): 4 blocks - [Environment, Current Affairs, Essay, History]
+  Day -4 (2026-03-25): 4 blocks - [Environment, Current Affairs, Essay, History]
+  Day -5 (2026-03-24): 4 blocks - [Environment, Current Affairs, Essay, History]
+  Day -6 (2026-03-23): 4 blocks - [Environment, Current Affairs, Essay, History]
+  Day -7 (2026-03-22): 4 blocks - [Environment, Current Affairs, Essay, History]
+  Day -8 (2026-03-21): 4 blocks - [Environment, Current Affairs, Essay, History]
+  Day -9 (2026-03-20): 4 blocks - [Environment, Current Affairs, Essay, History]
+  Day -10 (2026-03-19): 4 blocks - [Environment, Current Affairs, Essay, History]
+
+  Signals after seeding:
+  consistency_score: 0.72
+  weak_subjects: ['History']
+    History: miss=10 partial=0 complete=0 weak=True preferred=[]
+    Geography: miss=0 partial=0 complete=1 weak=False preferred=['08:40']
+    Polity: miss=0 partial=1 complete=0 weak=False preferred=[]
+    Economy: miss=0 partial=0 complete=1 weak=False preferred=['12:00']
+    Environment: miss=0 partial=0 complete=9 weak=False preferred=['07:00']
+    Current Affairs: miss=0 partial=0 complete=9 weak=False preferred=['08:40']
+    Essay: miss=0 partial=0 complete=9 weak=False preferred=['10:20']
+[PASS] History is_weak = True
+       miss_count=10
+[PASS] weak_subjects includes History
+[PASS] consistency_score > 0 and < 1
+       got 0.72
+
+=== TEST 3: POST /schedule/generate (tomorrow) ===
+  Status: 200
+    ID=50 | History | 07:00-08:30 | resched=40
+    ID=49 | History | 08:40-10:10 | resched=36
+    ID=48 | History | 10:20-11:50 | resched=32
+    ID=47 | History | 12:00-13:30 | resched=28
+    ID=46 | History | 13:40-15:10 | resched=24
+    ID=45 | History | 15:20-16:50 | resched=20
+    ID=44 | History | 17:00-18:30 | resched=16
+    ID=43 | History | 18:40-20:10 | resched=12
+[PASS] First block is weak subject (History)
+       got History
+[PASS] History present in schedule
+
+=== TEST 4: Consistency score on User ===
+  User.consistency_score = 0.72
+[PASS] consistency_score is not 0.0
+       got 0.72
+[PASS] consistency_score = signals.consistency_score
+       user=0.72, signals=0.72
+
+=== TEST 5: Phase 2 regression ===
+  Generate: 200, 8 blocks
+[PASS] 5a: Returns 200
+[PASS] 5a: Has blocks
+[PASS] 5b: Idempotent
+       ids_a=[42, 41, 50, 49, 48, 47, 46, 45], ids_b=[42, 41, 50, 49, 48, 47, 46, 45]
+[PASS] 5c: Report submit 200
+[PASS] 5c: blocks_completed=1
+[PASS] 5c: blocks_missed=1
+[PASS] 5c: rescheduled_count=1
+[PASS] 5d: Report GET 200
+[PASS] 5d: notes match
+
+============================================================
+ALL PHASE 3 ACCEPTANCE CRITERIA PASSED
+============================================================

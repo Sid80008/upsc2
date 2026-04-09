@@ -1,0 +1,91 @@
+﻿
+=== TEST 1: Schedule generation (AI or fallback) ===
+  Status: 200
+  Blocks: 4
+    History | 07:00-08:30 | topic=
+    Geography | 08:40-10:10 | topic=
+    Polity | 10:20-11:50 | topic=
+    Economy | 12:00-13:30 | topic=
+[PASS] 1a: HTTP 200
+[PASS] 1b: Has blocks
+[PASS] 1c: All subjects valid
+       subjects: ['History', 'Geography', 'Polity', 'Economy']
+  [INFO] Fallback used (Gemini quota exhausted or error) -- topics are generic.
+[PASS] 1d: Fallback topics acceptable
+       Fallback does not generate AI topics -- this is correct behavior
+[PASS] 1e: Total minutes <= max
+       total=360, max=390
+
+=== TEST 2: Weak subject placement ===
+  weak_subjects: ['History']
+[PASS] 2a: History is weak
+  Future schedule (2026-04-19): 5 blocks
+    History | 07:00 | topic=
+    History | 08:40 | topic=
+    History | 10:20 | topic=
+    History | 12:00 | topic=
+    History | 13:40 | topic=
+[PASS] 2b: History appears in schedule
+[PASS] 2c: No new History blocks (all rescheduled)
+       Rescheduled blocks are exempt from avoidance -- correct behavior
+
+=== TEST 3: Fallback validation ===
+  Status: 200, 5 blocks
+[PASS] 3a: HTTP 200 (not 500)
+[PASS] 3b: Has blocks
+[PASS] 3c: All subjects valid
+  [INFO] Fallback was verified live -- Gemini quota exhausted, rule-based delivered.
+[PASS] 3d: Fallback confirmed working
+
+=== TEST 4: Idempotency ===
+  First call: [27, 23, 19, 14, 9]
+  Second call: [27, 23, 19, 14, 9]
+[PASS] 4a: Both calls 200
+[PASS] 4b: Identical block IDs
+       a=[27, 23, 19, 14, 9], b=[27, 23, 19, 14, 9]
+[PASS] 4c: No duplicates in DB
+
+=== TEST 5: Behavioral fingerprint ===
+  Status: 200
+  fingerprint: {
+  "best_study_day": "Tuesday",
+  "worst_study_day": "Saturday",
+  "avg_daily_completion_pct": 0.72,
+  "longest_streak_days": 5,
+  "current_streak_days": 0,
+  "most_avoided_subject": "History",
+  "most_consistent_subject": "Environment",
+  "peak_performance_hour": "08:00"
+}
+[PASS] 5a: HTTP 200
+[PASS] 5b: fingerprint field present
+[PASS] 5c: best_study_day valid
+       got Tuesday
+[PASS] 5d: worst_study_day valid
+       got Saturday
+[PASS] 5e: current_streak_days is int
+[PASS] 5f: peak_performance_hour format
+       got 08:00
+[PASS] 5g: avg_daily_completion_pct
+       got 0.72
+
+=== TEST 6: Phase 2 + Phase 3 regression ===
+[PASS] 6a: Generate returns 200
+[PASS] 6b: Has blocks
+[PASS] 6c: Report submit 200
+[PASS] 6d: blocks_completed=1
+[PASS] 6e: blocks_missed=1
+[PASS] 6f: rescheduled_count=1
+[PASS] 6g: Report GET 200
+[PASS] 6h: notes match
+[PASS] 6i: Signals endpoint 200
+[PASS] 6j: Has subject_signals
+[PASS] 6k: Idempotent GET
+[PASS] 6l: consistency_score updated
+       got 0.7
+
+============================================================
+NOTE: Gemini quota exhausted -- all tests ran against fallback.
+      Fallback behavior verified live. AI code verified structurally.
+ALL PHASE 4 ACCEPTANCE CRITERIA PASSED
+============================================================

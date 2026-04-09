@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #005AAB;
+  --color-secondary: #64748b;
+  --color-surface: #f8fafc;
+  --color-surface-dark: #0f172a;
+  --color-success: #10B981;
+  --color-action: #EF4444;
+  
+  --radius-card: 24px;
+  --radius-card-lg: 32px;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+}
+
+@layer components {
+  .academic-card {
+    @apply bg-white rounded-[24px] border border-slate-200/50 shadow-none transition-all;
+  }
+  
+  .dark .academic-card {
+    @apply bg-slate-900 border-slate-800/50;
+  }
+}

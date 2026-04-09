@@ -1,0 +1,7 @@
+{
+  "name": "Academic Architect",
+  "description": "A high-performance, behavioral-driven UPSC study planning ecosystem with a premium academic design and AI-driven scheduling.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

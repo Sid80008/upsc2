@@ -1,0 +1,68 @@
+
+=== TEST 1: POST /schedule/generate ===
+  Status: 200
+  Blocks: 4
+  Subjects: ['History', 'Geography', 'Polity', 'Economy']
+  Total planned: 360
+    ID=1 | History | 07:00-08:30 | 90min | resched=None
+    ID=2 | Geography | 08:40-10:10 | 90min | resched=None
+    ID=3 | Polity | 10:20-11:50 | 90min | resched=None
+    ID=4 | Economy | 12:00-13:30 | 90min | resched=None
+[PASS] Returns 200
+[PASS] Has blocks
+       got 4 blocks
+[PASS] Total planned = user.daily_study_hours * 60 (360)
+       planned=360, expected=360
+[PASS] Idempotent (same IDs)
+       ids1=[1, 2, 3, 4], ids2=[1, 2, 3, 4]
+
+=== TEST 2: GET /schedule/1/2025-08-01 ===
+  Status: 200
+  Block IDs: [1, 2, 3, 4]
+[PASS] Returns 200
+[PASS] Same blocks as Test 1
+       ids1=[1, 2, 3, 4], ids3=[1, 2, 3, 4]
+
+=== TEST 3: POST /report/submit ===
+  Status: 200
+  Response: {
+  "report_id": 1,
+  "blocks_completed": 2,
+  "blocks_partial": 1,
+  "blocks_missed": 1,
+  "rescheduled_count": 1
+}
+[PASS] Returns 200
+[PASS] blocks_completed = 2
+[PASS] blocks_partial = 1
+[PASS] blocks_missed = 1
+[PASS] rescheduled_count = 1
+
+=== TEST 4: GET /report/1/2025-08-01 ===
+  Status: 200
+  Response: {
+  "id": 1,
+  "user_id": 1,
+  "date": "2025-08-01",
+  "submitted_at": "2026-03-29T16:02:34.389434",
+  "blocks_completed": 2,
+  "blocks_partial": 1,
+  "blocks_missed": 1,
+  "notes": "Had a bad afternoon."
+}
+[PASS] Returns 200
+[PASS] blocks_completed = 2
+[PASS] blocks_partial = 1
+[PASS] blocks_missed = 1
+[PASS] notes match
+
+=== TEST 5: POST /schedule/generate for 2025-08-02 ===
+  Status: 200
+    ID=5 | Economy | 07:00-08:30 | resched=4
+[PASS] Returns 200
+[PASS] First block has rescheduled_from_id = 4
+       got rescheduled_from_id=4
+
+============================================================
+ALL ACCEPTANCE CRITERIA PASSED
+============================================================

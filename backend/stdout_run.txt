@@ -1,0 +1,7 @@
+INFO:     127.0.0.1:63056 - "POST /auth/login HTTP/1.1" 200 OK
+Gemini API Error: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+INFO:     127.0.0.1:63059 - "POST /onboarding/complete HTTP/1.1" 500 Internal Server Error
+Gemini API Error: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+INFO:     127.0.0.1:63061 - "GET /schedule/1/2026-03-26 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:63063 - "GET /insights/weekly HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63064 - "GET /insights/subjects HTTP/1.1" 404 Not Found

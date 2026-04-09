@@ -1,0 +1,9 @@
+Analyzing upsc_app...                                           
+
+  error - Undefined name 'theme' - lib\main.dart:53:47 - undefined_identifier
+  error - Undefined name 'theme' - lib\main.dart:55:24 - undefined_identifier
+  error - Undefined name 'theme' - lib\main.dart:60:24 - undefined_identifier
+warning - The value of the local variable 'markerColor' isn't used - lib\screens\schedule_screen.dart:284:11 - unused_local_variable
+   info - 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre - lib\screens\tuner_screen.dart:251:15 - deprecated_member_use
+
+5 issues found. (ran in 4.6s)

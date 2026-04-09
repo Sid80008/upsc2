@@ -1,0 +1,60 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    function isDocOwner() {
+      return isAuthenticated() && request.auth.uid == resource.data.userId;
+    }
+    function isNewDocOwner() {
+      return isAuthenticated() && request.auth.uid == request.resource.data.userId;
+    }
+    function isValidString(val, maxLen) {
+      return val is string && val.size() <= maxLen;
+    }
+
+    // User Profile Rules
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && 
+        request.resource.data.keys().hasAll(['uid', 'examMode']) &&
+        request.resource.data.uid == userId;
+      allow update: if isOwner(userId) && 
+        request.resource.data.uid == userId;
+    }
+
+    // Study Blocks Rules
+    match /studyBlocks/{blockId} {
+      allow read: if isAuthenticated() && (resource == null || resource.data.userId == request.auth.uid);
+      allow create: if isNewDocOwner() && 
+        request.resource.data.keys().hasAll(['userId', 'subject', 'startTime', 'durationMinutes', 'status']);
+      allow update: if isDocOwner() && 
+        request.resource.data.userId == resource.data.userId;
+      allow delete: if isDocOwner();
+    }
+
+    // Daily Reports Rules
+    match /dailyReports/{reportId} {
+      allow read: if isAuthenticated() && (resource == null || resource.data.userId == request.auth.uid);
+      allow create: if isNewDocOwner() && 
+        request.resource.data.keys().hasAll(['userId', 'date', 'verified']);
+      allow update: if isDocOwner() && 
+        request.resource.data.userId == resource.data.userId;
+    }
+
+    // Notes Rules
+    match /notes/{noteId} {
+      allow read: if isAuthenticated() && (resource == null || resource.data.userId == request.auth.uid);
+      allow create: if isNewDocOwner() && 
+        request.resource.data.keys().hasAll(['userId', 'title', 'content']);
+      allow update: if isDocOwner() && 
+        request.resource.data.userId == resource.data.userId;
+      allow delete: if isDocOwner();
+    }
+  }
+}

@@ -1,0 +1,5 @@
+Analyzing upsc_app...                                           
+
+   info - The import of 'dart:ui' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart' - lib\screens\focus_mode_screen.dart:3:8 - unnecessary_import
+   info - Don't invoke 'print' in production code - lib\screens\focus_mode_screen.dart:80:7 - avoid_print
+

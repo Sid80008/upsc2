@@ -1,0 +1,8 @@
+Analyzing upsc_app...                                           
+
+   info - Don't invoke 'print' in production code - lib\services\auth_service.dart:24:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\auth_service.dart:43:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\auth_service.dart:74:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\auth_service.dart:101:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\auth_service.dart:123:7 - avoid_print
+

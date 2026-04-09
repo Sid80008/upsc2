@@ -1,0 +1,12 @@
+1|2026-03-26|Revision Cycle |08:00|pending  |r=None
+2|2026-03-26|History        |09:15|pending  |r=None
+3|2026-03-26|Polity         |10:30|pending  |r=None
+4|2026-03-26|Geography      |11:45|pending  |r=None
+5|2025-08-01|Polity         |07:00|completed|r=None
+6|2025-08-01|Economy        |08:40|completed|r=None
+7|2025-08-01|Environment    |10:20|partial  |r=None
+8|2025-08-01|Current Affairs|12:00|missed   |r=None
+9|2025-08-02|Current Affairs|07:00|pending  |r=8
+10|2025-08-02|Current Affairs|08:40|pending  |r=8
+11|2025-08-02|Current Affairs|10:20|pending  |r=8
+12|2025-08-02|Current Affairs|12:00|pending  |r=8
