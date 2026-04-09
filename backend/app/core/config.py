@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     
     # Phase 7: Infrastructure settings
     environment: str = "development"
-    allowed_origins: List[str] = ["*"]
+    allowed_origins: str = "*"
     access_token_expire_minutes: int = 60
     refresh_token_expire_days: int = 30
 
