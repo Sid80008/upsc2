@@ -10,8 +10,8 @@ services:
       - key: GEMINI_API_KEY
         sync: false
       - key: DATABASE_URL
-        value: sqlite:////data/upsc.db
-    disk:
-      name: upsc-sqlite-data
-      mountPath: /data
-      sizeGB: 1
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
