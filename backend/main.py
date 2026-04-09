@@ -9,6 +9,10 @@ from app.routers import (
     insights, library, news, health
 )
 from app.core.security import get_password_hash
+import logging
+from app.core.config import settings
+
+logger = logging.getLogger("upsc_app")
 
 
 def seed_default_user():
@@ -58,7 +62,12 @@ app.add_middleware(
 
 @app.on_event("startup")
 def on_startup():
-    seed_default_user()
+    logger.info("Application starting up...")
+    try:
+        seed_default_user()
+        logger.info("Default user seeding check completed.")
+    except Exception as e:
+        logger.error(f"Startup seeding failed: {e}", exc_info=True)
 
 app.include_router(health.router, prefix="/health", tags=["Health"])
 app.include_router(auth.router, prefix="/auth", tags=["Authentication"])

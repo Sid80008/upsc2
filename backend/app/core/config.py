@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     api_prefix: str = "/api/v1"
     
     database_url: str = "sqlite:///./upsc.db"
-    secret_key: str
+    secret_key: str = "insecure-default-change-me-in-production"
     gemini_api_key: str = ""
     news_api_key: str = ""
     groq_api_key: str = ""
