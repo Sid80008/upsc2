@@ -18,7 +18,7 @@ class AuthService {
         Uri.parse('${_getAuthUrl()}/login'),
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: {'username': email, 'password': password},
-      );
+      ).timeout(const Duration(seconds: 60));
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         final token = data['access_token'];
@@ -78,7 +78,7 @@ class AuthService {
           'password': password,
           'daily_study_hours': 6
         }),
-      );
+      ).timeout(const Duration(seconds: 60));
       return response.statusCode == 200 || response.statusCode == 201;
     } catch (e) {
       debugPrint('Signup error: $e');
@@ -112,7 +112,7 @@ class AuthService {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
         },
-      );
+      ).timeout(const Duration(seconds: 30));
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         final prefs = await SharedPreferences.getInstance();
@@ -145,7 +145,7 @@ class AuthService {
           'Authorization': 'Bearer $token',
         },
         body: jsonEncode(body),
-      );
+      ).timeout(const Duration(seconds: 30));
 
       return response.statusCode == 200;
     } catch (e) {
@@ -166,7 +166,7 @@ class AuthService {
           'Authorization': 'Bearer $token',
         },
         body: jsonEncode(payload),
-      );
+      ).timeout(const Duration(seconds: 60));
 
       return response.statusCode == 200;
     } catch (e) {
@@ -187,7 +187,7 @@ class AuthService {
           'Authorization': 'Bearer $token',
         },
         body: jsonEncode(payload),
-      );
+      ).timeout(const Duration(seconds: 60));
 
       return response.statusCode == 200;
     } catch (e) {

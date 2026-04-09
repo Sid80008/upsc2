@@ -84,6 +84,16 @@ app.include_router(library.router, prefix="/library", tags=["Library"])
 app.include_router(news.router, prefix="/news", tags=["News"])
 
 @app.get("/health")
-
 def health_check():
     return {"status": "ok"}
+
+@app.get("/ping")
+def ping_db():
+    """Lightweight DB ping to warm the connection pool and prevent cold-start delays."""
+    try:
+        db = SessionLocal()
+        db.execute(__import__('sqlalchemy').text("SELECT 1"))
+        db.close()
+        return {"status": "ok", "db": "connected"}
+    except Exception as e:
+        return {"status": "ok", "db": "error", "detail": str(e)}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import 'screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,12 +13,16 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'providers/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'core/config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   final token = prefs.getString('jwt_token');
   final isLoggedIn = token != null;
+
+  // Fire-and-forget DB warm-up ping — eliminates cold-start delay on first login
+  http.get(Uri.parse('${AppConfig.apiUrl}/ping')).ignore();
   
   runApp(
     ChangeNotifierProvider(
