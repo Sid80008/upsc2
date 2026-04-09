@@ -50,9 +50,12 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
     access_token = create_access_token(data={"sub": user.email})
     refresh_token = create_refresh_token(data={"sub": user.email})
     
-    # Store refresh token in DB
-    user.refresh_token = refresh_token
-    db.commit()
+    # Store refresh token — non-critical, don't let this block login
+    try:
+        user.refresh_token = refresh_token
+        db.commit()
+    except Exception:
+        db.rollback()
     
     return {
         "access_token": access_token, 
