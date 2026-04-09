@@ -24,7 +24,8 @@ class Settings(BaseSettings):
     
     # Phase 7: Infrastructure settings
     environment: str = "development"
-    allowed_origins: str = "*"
+    allowed_origins: str = "*"  # Comma-separated list for CORS
+    seed_user_password: str = "" # Optional seeding password
     access_token_expire_minutes: int = 60
     refresh_token_expire_days: int = 30
 

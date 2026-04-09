@@ -12,17 +12,27 @@ from app.core.security import get_password_hash
 
 
 def seed_default_user():
-    # Migrations are run manually via: alembic upgrade head
-    # Do not auto-migrate here. Use run_migrations.py for production startup.
+    """
+    Seeds a default user if none exist. 
+    In production, skips seeding if SEED_USER_PASSWORD is not set.
+    """
+    if settings.environment == "production" and not settings.seed_user_password:
+        return
+
     db = SessionLocal()
     try:
         user_count = db.query(User).count()
         if user_count == 0:
+            # Use environment variable for seed password
+            password = settings.seed_user_password
+            if not password:
+                # If no password is provided even in dev, we skip seeding to avoid hardcoded defaults
+                return
             exam_dt = date.today() + timedelta(days=180) # 6 months
             seed_user = User(
                 name="Aspirant",
                 email="test@upsc.com",
-                hashed_password=get_password_hash("password123"),
+                hashed_password=get_password_hash(password),
                 daily_study_hours=6,
                 exam_date=exam_dt
             )
@@ -40,7 +50,7 @@ app.add_middleware(LoggingMiddleware)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[o.strip() for o in settings.allowed_origins.split(",")],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

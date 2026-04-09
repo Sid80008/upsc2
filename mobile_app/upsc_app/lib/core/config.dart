@@ -1,10 +1,10 @@
 class AppConfig {
   static const String apiUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'http://127.0.0.1:8000',
+    defaultValue: 'https://upsc-2qbz.onrender.com',
   );
   static const String environment = String.fromEnvironment(
     'ENVIRONMENT',
-    defaultValue: 'development',
+    defaultValue: 'production',
   );
 }
