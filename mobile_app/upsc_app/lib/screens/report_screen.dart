@@ -22,6 +22,8 @@ class _ReportScreenState extends State<ReportScreen> {
   bool _isLoading = true;
   bool _isAlreadySubmitted = false;
   bool _isSubmitting = false;
+  // ignore: unused_field
+  ReportSubmitResponse? _lastResponse;
   int? _userId;
 
   // Design Tokens

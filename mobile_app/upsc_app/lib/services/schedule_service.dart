@@ -57,7 +57,7 @@ class ScheduleService {
       'user_id': userId,
       'date': date,
       'blocks': blocks,
-      if (focusRating != null) 'focus_rating': focusRating,
+      'focus_rating': ?focusRating,
     });
     return response.statusCode == 200;
   }
@@ -108,7 +108,7 @@ class ScheduleService {
   // Recovery & Preferences
   Future<Map<String, dynamic>> optimizeRecovery([int? userId]) async {
     final response = await ApiService.post('/schedule/recovery/optimize', {
-      if (userId != null) 'user_id': userId,
+      'user_id': ?userId,
     });
     if (response.statusCode == 200) return jsonDecode(response.body);
     return {'status': 'failed', 'number_of_blocks_rescheduled': 0};

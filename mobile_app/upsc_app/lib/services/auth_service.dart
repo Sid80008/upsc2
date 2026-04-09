@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../core/config.dart';
@@ -29,7 +30,7 @@ class AuthService {
       }
       return false;
     } catch (e) {
-      print('Login error: $e');
+      debugPrint('Login error: $e');
       return false;
     }
   }
@@ -56,7 +57,7 @@ class AuthService {
       await logout();
       return false;
     } catch (e) {
-      print('Refresh token error: $e');
+      debugPrint('Refresh token error: $e');
       return false;
     }
   }
@@ -75,7 +76,7 @@ class AuthService {
       );
       return response.statusCode == 200 || response.statusCode == 201;
     } catch (e) {
-      print('Signup error: $e');
+      debugPrint('Signup error: $e');
       return false;
     }
   }
@@ -116,7 +117,7 @@ class AuthService {
         return data;
       }
     } catch (e) {
-      print('Profile fetch error: $e');
+      debugPrint('Profile fetch error: $e');
     }
     return null;
   }
@@ -143,7 +144,7 @@ class AuthService {
 
       return response.statusCode == 200;
     } catch (e) {
-      print('Update profile error: $e');
+      debugPrint('Update profile error: $e');
       return false;
     }
   }
@@ -165,7 +166,7 @@ class AuthService {
 
       return response.statusCode == 200;
     } catch (e) {
-      print('Onboarding complete error: $e');
+      debugPrint('Onboarding complete error: $e');
       return false;
     }
   }
@@ -187,7 +188,7 @@ class AuthService {
 
       return response.statusCode == 200;
     } catch (e) {
-      print('User setup error: $e');
+      debugPrint('User setup error: $e');
       return false;
     }
   }
@@ -206,7 +207,7 @@ class AuthService {
       );
       return response.statusCode == 204;
     } catch (e) {
-      print('Delete account error: $e');
+      debugPrint('Delete account error: $e');
       return false;
     }
   }
@@ -225,7 +226,7 @@ class AuthService {
       );
       return response.statusCode == 200;
     } catch (e) {
-      print('Clear data error: $e');
+      debugPrint('Clear data error: $e');
       return false;
     }
   }

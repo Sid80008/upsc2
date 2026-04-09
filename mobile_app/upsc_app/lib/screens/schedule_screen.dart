@@ -64,7 +64,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         });
       }
     } catch (e) {
-      print("Schedule Load Error: $e");
+      debugPrint("Schedule Load Error: $e");
       if (mounted) {
         setState(() {
           _blocks = [];

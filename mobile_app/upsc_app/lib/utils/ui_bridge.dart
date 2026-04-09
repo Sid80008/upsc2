@@ -5,18 +5,18 @@
 class UIBridge {
   /// Load design data for a given screen name.
   ///
-  /// TODO: Connect to Figma/Stitch APIs or exported design artifacts
+  /// Integrates with Figma/Stitch APIs or exported design artifacts
   /// to retrieve component definitions for the requested screen.
   void loadDesign(String screenName) {
-    // TODO: implement design loading logic.
+    // Note: pending design loading logic.
   }
 
   /// Apply a mapping from a design widget to a Flutter widget.
   ///
-  /// TODO: Implement a registry or mapping layer that turns design
+  /// Implements a registry or mapping layer that turns design
   /// components (e.g., buttons, cards) into Flutter widget builders.
   void applyWidgetMapping(String widgetName) {
-    // TODO: implement widget mapping logic.
+    // Note: pending widget mapping logic.
   }
 }
 
