@@ -36,8 +36,18 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     setState(() => _isLoading = true);
+
+    // Inform user server may be slow on cold start
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Connecting... Please wait up to 60 seconds on first use.'),
+        duration: Duration(seconds: 8),
+        backgroundColor: Color(0xFF1173D4),
+      ),
+    );
+
     final success = await _authService.login(
-      _emailController.text,
+      _emailController.text.trim(),
       _passwordController.text,
     );
     setState(() => _isLoading = false);
@@ -49,7 +59,11 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     } else if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Login failed. Please check credentials.')),
+        const SnackBar(
+          content: Text('Login failed. Check your email/password, or try again if server was slow.'),
+          duration: Duration(seconds: 5),
+          backgroundColor: Colors.red,
+        ),
       );
     }
   }

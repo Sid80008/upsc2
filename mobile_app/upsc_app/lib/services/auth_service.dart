@@ -67,7 +67,7 @@ class AuthService {
     }
   }
 
-  Future<bool> signup(String name, String email, String password) async {
+  Future<String?> signup(String name, String email, String password) async {
     try {
       final response = await http.post(
         Uri.parse('${_getAuthUrl()}/signup'),
@@ -78,11 +78,21 @@ class AuthService {
           'password': password,
           'daily_study_hours': 6
         }),
-      ).timeout(const Duration(seconds: 60));
-      return response.statusCode == 200 || response.statusCode == 201;
-    } catch (e) {
+      ).timeout(const Duration(seconds: 90));
+      if (response.statusCode == 200 || response.statusCode == 201) return null;
+      // Extract backend error message
+      try {
+        final data = jsonDecode(response.body);
+        return data['detail'] ?? 'Signup failed (${response.statusCode})';
+      } catch (_) {
+        return 'Signup failed (${response.statusCode})';
+      }
+    } on Exception catch (e) {
       debugPrint('Signup error: $e');
-      return false;
+      if (e.toString().contains('TimeoutException')) {
+        return 'Connection timed out. Server is warming up — please try again in 10 seconds.';
+      }
+      return 'Connection error. Check your internet and try again.';
     }
   }
 

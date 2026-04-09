@@ -36,15 +36,26 @@ class _SignupScreenState extends State<SignupScreen> {
     }
 
     setState(() => _isLoading = true);
-    final success = await _authService.signup(
-      _nameController.text,
-      _emailController.text,
+
+    // Show hint that server may be slow on first connection
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Connecting to server... This may take up to 60 seconds on first use.'),
+        duration: Duration(seconds: 8),
+        backgroundColor: Color(0xFF1173D4),
+      ),
+    );
+
+    final error = await _authService.signup(
+      _nameController.text.trim(),
+      _emailController.text.trim(),
       _passwordController.text,
     );
     
-    if (success) {
+    if (error == null) {
+      // Signup succeeded — now login
       final loginSuccess = await _authService.login(
-        _emailController.text,
+        _emailController.text.trim(),
         _passwordController.text,
       );
       setState(() => _isLoading = false);
@@ -54,12 +65,21 @@ class _SignupScreenState extends State<SignupScreen> {
           MaterialPageRoute(builder: (_) => const OnboardingScreen()),
           (route) => false
         );
+      } else if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Account created! Please log in manually.')),
+        );
+        Navigator.pop(context); // Go back to login screen
       }
     } else {
       setState(() => _isLoading = false);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Signup failed. Email might be in use.')),
+          SnackBar(
+            content: Text(error),
+            duration: const Duration(seconds: 6),
+            backgroundColor: Colors.red.shade700,
+          ),
         );
       }
     }
