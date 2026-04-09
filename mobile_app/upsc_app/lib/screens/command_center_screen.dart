@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
-import '../services/schedule_service.dart';
 
 class CommandCenterScreen extends StatefulWidget {
   const CommandCenterScreen({super.key});
@@ -10,7 +9,6 @@ class CommandCenterScreen extends StatefulWidget {
 }
 
 class _CommandCenterScreenState extends State<CommandCenterScreen> {
-  final ScheduleService _api = ScheduleService();
   bool _isLoading = true;
   Map<String, dynamic>? _summary;
 

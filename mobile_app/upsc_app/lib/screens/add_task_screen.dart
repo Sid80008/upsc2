@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../services/schedule_service.dart';
 
 class AddTaskScreen extends StatefulWidget {
@@ -54,7 +55,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     final minutes = _selectedTime.minute.toString().padLeft(2, '0');
     final timeStr = '$hours:$minutes';
 
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getInt('user_id') ?? 1;
+
     final error = await _api.addTask(
+      userId: userId,
       date: dateStr,
       subject: _subjectCtrl.text.trim(),
       topic: _topicCtrl.text.trim(),

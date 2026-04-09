@@ -8,12 +8,9 @@ class AuthService {
   final String baseUrl = AppConfig.apiUrl;
 
   String _getAuthUrl() => baseUrl.endsWith('/auth') ? baseUrl : '$baseUrl/auth';
-  String _getOnboardingUrl() => baseUrl.endsWith('/auth') 
-      ? baseUrl.replaceAll('/auth', '/onboarding') 
+  String _getOnboardingUrl() => baseUrl.endsWith('/auth')
+      ? baseUrl.replaceAll('/auth', '/onboarding')
       : '$baseUrl/onboarding';
-  String _getScheduleUrl() => baseUrl.endsWith('/auth')
-      ? baseUrl.replaceAll('/auth', '/schedule')
-      : '$baseUrl/schedule';
 
   Future<bool> login(String email, String password) async {
     try {

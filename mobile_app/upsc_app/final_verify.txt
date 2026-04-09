@@ -1,4 +1,0 @@
-Analyzing upsc_app...                                           
-
-   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\study_block_card.dart:111:29 - deprecated_member_use
-

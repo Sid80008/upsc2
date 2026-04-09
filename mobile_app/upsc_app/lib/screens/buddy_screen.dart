@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
-import '../services/schedule_service.dart';
 
 class BuddyScreen extends StatefulWidget {
   final VoidCallback? onBackHome;
@@ -14,7 +13,6 @@ class BuddyScreen extends StatefulWidget {
 class _BuddyScreenState extends State<BuddyScreen> {
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
-  final ScheduleService _api = ScheduleService();
   late SharedPreferences _prefs;
   List<Map<String, dynamic>> _messages = [
     {
